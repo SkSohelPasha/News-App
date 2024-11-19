@@ -20,14 +20,10 @@ setProgress=(progress)=>{
     return (
       <div>
         <Navbar/>
-        <div>
       <LoadingBar
       height={3}
         color='#f11946'
-        progress={this.state.progress}
-
-      />
-      </div>
+        progress={this.state.progress}/>
         <News setProgress={this.setProgress} pageSize={this.pageSize} country='us' category="play"/>
 
       </div>
