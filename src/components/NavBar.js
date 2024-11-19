@@ -8,7 +8,7 @@ export class NavBar extends Component{
             <div>
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="/">NewsMonkey</a>
+    <a className="navbar-brand" href="/">NewsToday</a>
   </div>
 </nav>
             </div>
