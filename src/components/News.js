@@ -187,10 +187,10 @@ static propTypes={
     }
 async updateNews(pageNo){
   this.props.setProgress(0);
-  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${this.state.page``}&pageSize=${this.props.pageSize}`;
   let data=await fetch(url);
   let parsedData= await data.json()
-  this.setState({articles:parsedData.articles , totalResults: parsedData.totalResult})
+  this.setState({articles:parsedData.articles , totalResults: parsedData.totalResults})
   this.props.setProgress(100);
 }
    async componentDidMount(){
@@ -199,7 +199,7 @@ async updateNews(pageNo){
     // let parsedData= await data.json()
     // console.log(parsedData);
     // this.setState({articles:parsedData.articles , totalResults: parsedData.totalResult})
-   this.updateNews();  
+   this.updateNews(1);  
   }
 
 
@@ -215,7 +215,7 @@ async updateNews(pageNo){
 // }
 // );
 this.setState({page:this.state.page - 1})
-this.updateNews();
+this.updateNews(1);
  };
 
 
@@ -235,7 +235,7 @@ this.updateNews();
 //   })
 // }
 this.setState({page:this.state.page + 1});
-this.updateNews();
+this.updateNews(1);
 };
 
 
