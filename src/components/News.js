@@ -187,10 +187,10 @@ static propTypes={
     }
 async updateNews(pageNo){
   this.props.setProgress(0);
-  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${pageNo}&pageSize=${this.props.pageSize}`;
   let data=await fetch(url);
   let parsedData= await data.json()
-  this.setState({articles:parsedData.articles , totalResults: parsedData.totalResults})
+  this.setState({articles:parsedData.articles , totalResults: parsedData.totalResults , page: pageNo})
   this.props.setProgress(100);
 }
    async componentDidMount(){
@@ -214,8 +214,10 @@ async updateNews(pageNo){
 //   articles: parsedData.articles
 // }
 // );
-this.setState({page:this.state.page - 1})
-this.updateNews();
+// this.updateNews(this.state.page - 1);
+  if (this.state.page > 1) {
+    this.updateNews(this.state.page - 1);
+  }
  };
 
 
@@ -234,8 +236,12 @@ this.updateNews();
 //     articles:parsedData.articles
 //   })
 // }
-this.setState({page:this.state.page + 1});
-this.updateNews();
+// this.updateNews(this.state.page + 1);
+  const maxPages = Math.ceil(this.state.totalResults / this.props.pageSize);
+
+  if (this.state.page < maxPages) {
+    this.updateNews(this.state.page + 1);
+  }
 };
 
 
@@ -254,7 +260,15 @@ this.updateNews();
         )}
 <div className="container d-flex justify-content-between">
 <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous</button>
-<button disabled={this.state.page +1 > Math.ceil(this.state.totalResult/this.props.pageSize)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
+{/* <button disabled={this.state.page +1 > Math.ceil(this.state.totalResult/this.props.pageSize)} type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button> */}
+<button 
+  disabled={this.state.page >= Math.ceil(this.state.totalResults / this.props.pageSize)} 
+  type="button" 
+  className="btn btn-dark" 
+  onClick={this.handleNextClick}
+>
+  Next &rarr;
+</button>
 </div>
   </div>
       </div>
