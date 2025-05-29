@@ -187,7 +187,7 @@ static propTypes={
     }
 async updateNews(pageNo){
   this.props.setProgress(0);
-  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${this.state.page``}&pageSize=${this.props.pageSize}`;
+  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${this.state.page}&pageSize=${this.props.pageSize}`;
   let data=await fetch(url);
   let parsedData= await data.json()
   this.setState({articles:parsedData.articles , totalResults: parsedData.totalResults})
@@ -215,7 +215,7 @@ async updateNews(pageNo){
 // }
 // );
 this.setState({page:this.state.page - 1})
-this.updateNews(1);
+this.updateNews();
  };
 
 
@@ -235,7 +235,7 @@ this.updateNews(1);
 //   })
 // }
 this.setState({page:this.state.page + 1});
-this.updateNews(1);
+this.updateNews();
 };
 
 
