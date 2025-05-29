@@ -5,7 +5,7 @@ export  class NewsItem extends Component {
   render() {
    let {description,imageUrl,url,author,date,source}=this.props;
     return (
-      <div className='my-3'>
+      <div className='my-1'>
         <div  className="card" style={{width:' 18rem' , margin:'0 10px' }}>
 <div>
 <span className="badge rounded-pill bg-danger" style={{display:'flex',justifyContent:'flex-end',position:'absolute',right:'0'}}>
