@@ -187,7 +187,7 @@ static propTypes={
     }
 async updateNews(pageNo){
   this.props.setProgress(0);
-  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=f7c74a4ba45e410d895b2a9ef3d1aca6&page=${pageNo}&pageSize=${this.props.pageSize}`;
+  const url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=64889e95706d45b2b047d9606f8ec6c3 &page=${pageNo}&pageSize=${this.props.pageSize}`;
   let data=await fetch(url);
   let parsedData= await data.json()
   this.setState({articles:parsedData.articles , totalResults: parsedData.totalResults , page: pageNo})
