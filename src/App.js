@@ -25,7 +25,6 @@ setProgress=(progress)=>{
         color='#f11946'
         progress={this.state.progress}/>
         <News setProgress={this.setProgress} pageSize={this.pageSize} country='us' category="play"/>
-
       </div>
     )
   }
