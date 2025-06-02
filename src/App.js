@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Navbar from './components/NavBar';
 import News from './components/News';
 import LoadingBar from 'react-top-loading-bar';
+import NewsItem from './components/NewsItem';
 
 export default class App extends Component {
   pageSize = 8;
